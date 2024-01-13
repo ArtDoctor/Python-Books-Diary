@@ -17,7 +17,7 @@ I wasn't fully sure how to interpret the instructions of the task, so this is ho
 Use the following commands to control the program:
 - show (shows books in currently opened diary)
 - close (closes current diary)
-- create {diary_name} (creates new diary object)
+- create (creates new diary object)
 - save {diary_name} (saves currently open diary with specified name)
 - load {diary_name} (opens diary if it exists in folder diaries/)
 - insert {book_title} (creates a new book object. It will ask you for data like author, genre etc.)

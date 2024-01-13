@@ -39,17 +39,18 @@ class ProgramController():
 
 
     def help(self):
-        print("""\033[1;36m Commands: \033[0m
-    show
-    create {diary_name}
-    save
-    load {diary_name}
-    insert {book_title} 
-    find title:"{title_name}" author:"{author_name}"
-    remove title:"{title_name}" author:"{author_name}"
-    remove all
-    delete diary
-        """)
+        print_green('List of commands:')
+        print("""
+    - show (shows books in currently opened diary)
+    - close (closes current diary)
+    - create (creates new diary object)
+    - save {diary_name} (saves currently open diary with specified name)
+    - load {diary_name} (opens diary if it exists in folder diaries/)
+    - insert {book_title} (creates a new book object. It will ask you for data like author, genre etc.)
+    - find title:"{title_name}" author:"{author_name}" (finds all books with title/author provided. You can write only title or only author if you want.)
+    - remove title:"{title_name}" author:"{author_name}" (if you don't provide any parameters, all books will be deleted.)
+    - delete {diary_name} (deletes diary with specified name)""")
+
 
     def diary_is_open(self):
         if self.current_diary is None:
@@ -57,10 +58,12 @@ class ProgramController():
         else:
             return True
 
+
     @requires_open_diary
     def close(self):
         self.current_diary = None
         print_green('Closed the diary.')
+
 
     @requires_open_diary
     def show(self):
@@ -71,13 +74,11 @@ class ProgramController():
             for i, book in enumerate(current_books):
                 print_green(f'{i+1}: {book.title} by {book.author}')
 
+
     @requires_closed_diary
-    def create_diary(self, name: str):
-        if len(name.strip()) == 0:
-            print_red('Diary name cannot be empty.')
-        else:
-            self.current_diary = Diary()
-            print_green(f'Created a diary with name "{name}".')
+    def create_diary(self):
+        self.current_diary = Diary()
+        print_green(f'Created a new diary.')
 
 
     @requires_open_diary

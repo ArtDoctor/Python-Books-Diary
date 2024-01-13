@@ -9,7 +9,7 @@ def main(controller: ProgramController):
     elif command == 'show':
         controller.show()
     elif command[:6] == 'create':
-        controller.create_diary(command[7:])
+        controller.create_diary()
     elif command[:4] == 'save':
         controller.save_diary(command[5:])
     elif command[:4] == 'load':

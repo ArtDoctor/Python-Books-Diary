@@ -159,6 +159,13 @@ class ProgramController():
             else:
                 for i, book in enumerate(found_books):
                     print_green(f'{i+1}: {book.title} by {book.author}')
+                    print(f'    Year: {book.year}')
+                    print(f'    Month: {book.month}')
+                    print(f'    Day: {book.day}')
+                    print(f'    Publication year: {book.publication_year}')
+                    print(f'    Genres: {book.genre}')
+                    print(f'    Number of pages: {book.number_of_pages}')
+                    
         except Exception as e:
             print_red(f'Error while looking for a book: {e}')
 

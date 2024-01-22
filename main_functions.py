@@ -27,7 +27,7 @@ def requires_open_diary(func):
 def requires_closed_diary(func):
     def wrapper(self, *args, **kwargs):
         if self.diary_is_open():
-            print_red('You are already working on a diary. Delete or close it first.')
+            print_red('You are already working on a diary. Close it first.')
         else:
             return func(self, *args, **kwargs)
     return wrapper

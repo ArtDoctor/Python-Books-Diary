@@ -20,8 +20,8 @@ def main(controller: ProgramController):
         controller.find_book(command[5:])
     elif command[:6] == 'remove':
         controller.remove_book(command[7:])
-    elif command[:12] == 'delete diary':
-        controller.delete_diary()
+    elif command[:6] == 'delete':
+        controller.delete_diary(command[7:])
     else:
         print('Unknown command. Type down "help" to see the list of commands.')
 

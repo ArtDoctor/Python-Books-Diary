@@ -185,9 +185,8 @@ class ProgramController():
                 inp = input_blue('Are you sure you want to remove these books? Type "yes" to confirm: ')
                 
                 if inp == 'yes':
-                    print("AFFF", found_books)
                     for book in found_books:
-                        print("AF", book.title)
+                        print("Removed ", book.title)
                         self.current_diary.remove_book(book)
                     print_green('Removed all found books.')
                 else:
@@ -205,8 +204,12 @@ class ProgramController():
             if path[-5:] != '.json':
                 path += '.json'
             try:
-                os.remove(DEFAULT_FOLDER + path)
-                print_green(f'Deleted diary at "{DEFAULT_FOLDER + path}".')
+                inp = input_blue(f'Are you sure you want to remove diary "{path}"? Type "yes" to confirm: ')
+                if inp == 'yes':
+                    os.remove(path)
+                    print_green(f'Deleted diary at "{DEFAULT_FOLDER + path}".')
+                else:
+                    print_green('Cancelled.')
             except FileNotFoundError:
                 print_red(f"Error while deleting a diary - diary {path} doesn't exist.")
             except Exception as e:

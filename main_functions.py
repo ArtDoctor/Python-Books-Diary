@@ -129,6 +129,23 @@ class ProgramController():
             print_red(f'Error while inserting a book: {e}')
 
 
+    @requires_open_diary
+    def bigbook(self):
+        try:
+            max_pages = -1
+            biggest_book = ''
+            for book in self.current_diary.books:
+                if book.number_of_pages > max_pages:
+                    max_pages = book.number_of_pages
+                    biggest_book = book.title
+            if max_pages == -1:
+                print_red("No books are in the diary!")
+            else:
+                print_green(f"Found biggest book: {biggest_book}, number of pages: {max_pages}")
+        except Exception as e:
+            print_red(f'Error while finding a book: {e}')
+
+
     def preprocess_input_filters(self, input_string: str):
         try:
             if 'author' in input_string:

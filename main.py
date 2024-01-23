@@ -22,6 +22,8 @@ def main(controller: ProgramController):
         controller.remove_book(command[7:])
     elif command[:6] == 'delete':
         controller.delete_diary(command[7:])
+    elif command[:7] == 'bigbook':
+        controller.bigbook()
     else:
         print('Unknown command. Type down "help" to see the list of commands.')
 
